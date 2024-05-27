@@ -1,5 +1,3 @@
-import { useState } from "react";
-import Navbar from "./components/navbar/Navbar";
 import Home from "./routes/homePage/Home";
 import ListPage from "./routes/listPage/ListPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";

@@ -1,5 +1,4 @@
 import Navbar from "../../components/navbar/Navbar";
-import Home from "../homePage/Home";
 import { Outlet } from "react-router-dom";
 import "./layout.scss";
 export default function Layout() {
