@@ -1,12 +1,12 @@
-import "./login.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+
+import "./register.scss";
+import { useState } from "react";
+
 import apiRequest from "../../lib/apiRequest";
-import { AuthContext } from "../../context/AuthContext";
-export default function Login() {
+export default function Register() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,36 +14,37 @@ export default function Login() {
     setIsLoading(true);
     const formData = new FormData(e.target);
     const username = formData.get("username");
+    const email = formData.get("email");
     const password = formData.get("password");
 
     try {
-      const res = await apiRequest.post("/auth/login", {
+      const res = await apiRequest.post("/auth/register", {
         username,
+        email,
         password,
       });
-      updateUser(res.data);
-      navigate("/");
+      navigate("/login");
     } catch (err) {
       setError(err.response.data.message);
-      // console.log(err.res.data.message);
     } finally {
       setIsLoading(false);
     }
   };
   return (
-    <div className="login">
+    <div className="register">
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
-          <h1>Welcome !</h1>
+          <h1>Create an Account</h1>
           <input name="username" type="text" placeholder="Username"></input>
+          <input name="email" type="text" placeholder="Email"></input>
           <input name="password" type="password" placeholder="Password"></input>
-          <button disabled={isLoading}> Login </button>
+          <button> Register</button>
           {error && <span>{error}</span>}
-          <Link to="/register">Dont have an account, Sign up?</Link>
+          <Link to="/login">Already having an account?</Link>
         </form>
       </div>
       <div className="imgContainer">
-        <img src="/bg.png" alt="" />
+        <img src="/bg.png"></img>
       </div>
     </div>
   );

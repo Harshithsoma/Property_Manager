@@ -1,10 +1,11 @@
 import Home from "./routes/homePage/Home";
 import ListPage from "./routes/listPage/ListPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./routes/layout/Layout";
+import { Layout, RequireAuth } from "./routes/layout/Layout";
 import SinglePage from "./routes/singlePage/SinglePage";
 import Login from "./routes/login/Login";
 import ProfilePage from "./routes/profilePage/ProfilePage";
+import Register from "./routes/register/Register";
 
 function App() {
   const router = createBrowserRouter([
@@ -28,6 +29,17 @@ function App() {
           path: "/login",
           element: <Login />,
         },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+      ],
+    },
+
+    {
+      path: "/",
+      element: <RequireAuth />,
+      children: [
         {
           path: "/profile",
           element: <ProfilePage />,
