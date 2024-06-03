@@ -12,7 +12,7 @@ export default function Navbar() {
     <nav>
       <div className="left">
         <a href="/" className="logo">
-          <img src="/logo.png"></img>
+          <img src="/logo.jpeg"></img>
           <span>Heaven Heights</span>
         </a>
         <a href="/">Home</a>

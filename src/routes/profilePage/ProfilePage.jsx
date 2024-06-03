@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Chat from "../../components/chat/Chat";
 import List from "../../components/list/List";
 import apiRequest from "../../lib/apiRequest";
@@ -25,7 +25,9 @@ export default function ProfilePage() {
         <div className="wrapper">
           <div className="title">
             <h1> User Information</h1>
-            <button>Update Profile</button>
+            <Link to="/profile/update">
+              <button>Update Profile</button>
+            </Link>
           </div>
 
           <div className="info">
@@ -46,7 +48,9 @@ export default function ProfilePage() {
           </div>
           <div className="title">
             <h1> My List</h1>
-            <button>Create new Post</button>
+            <Link to="/add">
+              <button>Create New Post</button>
+            </Link>
           </div>
           <List />
           <div className="title">
